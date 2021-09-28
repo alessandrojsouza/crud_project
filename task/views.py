@@ -4,9 +4,16 @@ from django.utils import timezone
 
 # Create your views here.
 
-# Lista todas as terefas e encaminha para página lista.html
+# Lista as terefas pelo termo de pesquisa ou lista 
+# todas quando não digitado ou acesso é via metodos GET
 def listaView(request):
-    tarefas = Tarefa.objects.all()
+    if (request.method == 'POST'):
+        termo = request.POST['pesquisa']
+        tarefas = Tarefa.objects.filter(titulo__icontains=termo)
+
+    else:
+        tarefas = Tarefa.objects.all()
+
     return render (request, 'lista.html',{'tarefas':tarefas})
 
 

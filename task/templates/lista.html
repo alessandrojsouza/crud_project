@@ -18,14 +18,13 @@
 
         <div> 
             <!--Fomulário de Pesquisa -->
-            <form action="">
-                <input type="text" placeholder="Digite o nome da tarefa">
+            <form action="" method="post">
+              {% csrf_token %}
+                <input type="text" name="pesquisa" id="p" placeholder="Pesquisar tarefa">
                 <input type="submit" value="Pesquisar">
                 <a href="formCadastroTarefa/"><input type="button" value="Adicionar tarefas"></a>
             </form>
             
-            
-
             <!--Lista de Tarefas Cadastradas-->
             <br/>
             <ul>
