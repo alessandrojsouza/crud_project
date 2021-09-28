@@ -13,32 +13,17 @@
   <body>
     <div class="container">
         <p></p>
-        <h1>Lista de tarefas</h1>
+        <h1>Editar tarefas</h1>
         <hr/>
 
         <div> 
-            <!--Fomulário de Pesquisa -->
-            <form action="">
-                <input type="text" placeholder="Digite o nome da tarefa">
-                <input type="submit" value="Pesquisar">
-                <a href="formCadastroTarefa/"><input type="button" value="Adicionar tarefas"></a>
-            </form>
-            
-            
-
-            <!--Lista de Tarefas Cadastradas-->
-            <br/>
-            <ul>
-                {% for tarefa in tarefas %}
-                <li>
-                  <span> <a href="delTarefa/{{tarefa.id}}">Apagar</a></span>
-                   &nbsp;| 
-                   <span> <a href="editTarefa/{{tarefa.id}}">Editar</a></span>
-                   &nbsp;| &nbsp;&nbsp;&nbsp;
-                   <span><a href="tarefa/{{tarefa.id}}">{{tarefa.titulo}}</a></span> 
-                </li>
-                {% endfor %}
-            </ul>
+            <!--Fomulário de Cadastro -->
+            <form action="/editTarefa/{{tarefa.id}}" method="POST">
+              {% csrf_token %}
+                <input type="text" name="titulo" id="t" value="{{tarefa.titulo}}">
+                <input type="textarea" name="descricao" id="d" value="{{tarefa.descricao}}">
+                <input type="submit" value="Enviar">
+            </form>        
         </div>
     </div>
 
